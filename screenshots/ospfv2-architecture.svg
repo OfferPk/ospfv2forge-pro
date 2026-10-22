@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="1000" height="650">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="100%" stop-color="#081021" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#101e3f" />
+      <stop offset="100%" stop-color="#081022" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="650" fill="url(#bgGrad)" />
+
+  <text x="500" y="45" fill="#f8fafc" font-family="-apple-system, sans-serif" font-weight="900" font-size="22" text-anchor="middle">OSPFv2 Multi-Area Architecture &amp; DBD MTU Deadlock Defense</text>
+  <text x="500" y="70" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">RFC 2328 Fixed Header, RFC 5709 HMAC-SHA-256 &amp; ExStart Adjacency Formation</text>
+
+  <!-- Center: Area 0 Backbone -->
+  <rect x="330" y="100" width="340" height="220" rx="10" fill="url(#nodeGrad)" stroke="#a855f7" stroke-width="2" />
+  <rect x="345" y="115" width="310" height="26" rx="4" fill="url(#purpleGrad)" />
+  <text x="500" y="133" fill="#050811" font-family="sans-serif" font-weight="bold" font-size="12" text-anchor="middle">Area 0 (Backbone Area) — Core</text>
+
+  <text x="350" y="165" fill="#cbd5e1" font-family="monospace" font-size="11">Core DR: 10.254.0.1 (Priority 100)</text>
+  <text x="350" y="185" fill="#cbd5e1" font-family="monospace" font-size="11">Core BDR: 10.254.0.2 (Priority 50)</text>
+  <text x="350" y="205" fill="#34d399" font-family="monospace" font-size="10">• Auth: RFC 5709 HMAC-SHA-256</text>
+  <text x="350" y="225" fill="#22d3ee" font-family="monospace" font-size="10">• Ref-BW: 100 Gbps (auto-cost 100000)</text>
+  <text x="350" y="245" fill="#fbbf24" font-family="monospace" font-size="10">• Hardware BFD Sub-50ms Active</text>
+  <rect x="345" y="270" width="310" height="35" rx="6" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" />
+  <text x="500" y="292" fill="#34d399" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">✓ Backbone Continuity &amp; Zero Packet Loss</text>
+
+  <!-- Left: Area 1 (Standard Campus Area) -->
+  <rect x="40" y="370" width="280" height="240" rx="10" fill="url(#nodeGrad)" stroke="#06b6d4" stroke-width="2" />
+  <rect x="55" y="385" width="250" height="26" rx="4" fill="rgba(6, 182, 212, 0.2)" />
+  <text x="180" y="403" fill="#22d3ee" font-family="sans-serif" font-weight="bold" font-size="12" text-anchor="middle">Area 1 (Campus LAN) - ABR</text>
+
+  <text x="55" y="435" fill="#cbd5e1" font-family="monospace" font-size="10">ABR Range: 10.100.0.0/16</text>
+  <text x="55" y="455" fill="#cbd5e1" font-family="monospace" font-size="10">LSA Type 3 (Summary LSA)</text>
+  <text x="55" y="475" fill="#34d399" font-family="monospace" font-size="10">Leaf Switch: Priority 0 (DROTHER)</text>
+  <text x="55" y="495" fill="#22d3ee" font-family="monospace" font-size="10">Passive-Interface Default Active</text>
+  <rect x="55" y="555" width="250" height="35" rx="6" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" />
+  <text x="180" y="577" fill="#22d3ee" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">✓ SPF Blast Radius Contained</text>
+
+  <!-- Center Bottom: DBD MTU Deadlock Trap -->
+  <rect x="360" y="370" width="280" height="240" rx="10" fill="url(#nodeGrad)" stroke="#ef4444" stroke-width="2" />
+  <rect x="375" y="385" width="250" height="26" rx="4" fill="rgba(239, 68, 68, 0.2)" />
+  <text x="500" y="403" fill="#f87171" font-family="sans-serif" font-weight="bold" font-size="12" text-anchor="middle">DBD MTU Deadlock Trap</text>
+
+  <text x="375" y="435" fill="#f87171" font-family="monospace" font-size="10">Router A MTU: 1500 Bytes</text>
+  <text x="375" y="455" fill="#f87171" font-family="monospace" font-size="10">Router B MTU: 1492 Bytes</text>
+  <text x="375" y="475" fill="#cbd5e1" font-family="sans-serif" font-size="10">State: ExStart / Exchange Lock</text>
+  <text x="375" y="495" fill="#cbd5e1" font-family="sans-serif" font-size="10">Continuous DBD Retransmissions</text>
+  <rect x="375" y="555" width="250" height="35" rx="6" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" />
+  <text x="500" y="577" fill="#f87171" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">✗ 100% CPU Spike | Routes Dropped</text>
+
+  <!-- Right: Area 2 (NSSA with P-bit Translation) -->
+  <rect x="680" y="370" width="280" height="240" rx="10" fill="url(#nodeGrad)" stroke="#fbbf24" stroke-width="2" />
+  <rect x="695" y="385" width="250" height="26" rx="4" fill="rgba(251, 191, 36, 0.2)" />
+  <text x="820" y="403" fill="#fbbf24" font-family="sans-serif" font-weight="bold" font-size="12" text-anchor="middle">Area 2 (Data Center NSSA)</text>
+
+  <text x="695" y="435" fill="#cbd5e1" font-family="monospace" font-size="10">LSA Type 7 (NSSA External)</text>
+  <text x="695" y="455" fill="#cbd5e1" font-family="monospace" font-size="10">P-bit: Propagate Flag Set</text>
+  <text x="695" y="475" fill="#34d399" font-family="monospace" font-size="10">ABR translates Type 7 -> Type 5</text>
+  <text x="695" y="495" fill="#fbbf24" font-family="monospace" font-size="10">Jumbo MTU 9000 Bytes Aligned</text>
+  <rect x="695" y="555" width="250" height="35" rx="6" fill="rgba(251, 191, 36, 0.15)" stroke="#fbbf24" />
+  <text x="820" y="577" fill="#fbbf24" font-family="sans-serif" font-weight="bold" font-size="11" text-anchor="middle">✓ External BGP Redistributed</text>
+
+  <!-- Connectors -->
+  <line x1="420" y1="320" x2="200" y2="370" stroke="#06b6d4" stroke-width="2" />
+  <line x1="500" y1="320" x2="500" y2="370" stroke="#ef4444" stroke-width="2" stroke-dasharray="4" />
+  <line x1="580" y1="320" x2="800" y2="370" stroke="#fbbf24" stroke-width="2" />
+</svg>
